@@ -29,7 +29,6 @@ func CreateApp(c *gin.Context)  {
 	err := c.ShouldBind(&input)
 	if err != nil {
 		log.Error(err)
-		reqError.Observe(1)
 		res := response.ErrorResponse("name is required")
 		// 返回结果
 		c.JSON(res.Status, res)

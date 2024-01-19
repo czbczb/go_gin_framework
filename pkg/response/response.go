@@ -1,7 +1,6 @@
 package response
 
 import (
-	"go_gin_framework/pkg/err"
 	"time"
 )
 
@@ -22,7 +21,7 @@ func SuccessResponse(result interface{}) Response {
 	}
 }
 
-func ErrorResponse(message string ) Response {
+func ErrorResponse(message string) Response {
 	return Response{
 		Status:  200,
 		ErrCode: 1,
