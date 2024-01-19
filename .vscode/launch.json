@@ -1,0 +1,20 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "demo",
+      "type": "go",
+      "env": {
+        "GIN_MODE": "debug",
+        // "apiType": "444",   // 会覆盖envFile中的环境变量
+      },
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}/cmd/server/server.go",
+      "envFile": "${workspaceFolder}/.vscode/devEnv.env"
+    }
+  ]
+}
