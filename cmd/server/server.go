@@ -2,10 +2,12 @@ package main
 
 import (
 	"fmt"
-	"go_gin_framework/pkg/demo"
 	"go_gin_framework/pkg/app"
+	"go_gin_framework/pkg/demo"
+	"go_gin_framework/pkg/rateLimit"
 	"net/http"
 	"regexp"
+  "time"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -31,6 +33,10 @@ func main() {
 
 
   appGroup := r.Group("app")
+
+  tokenBucket := rateLimit.NewTokenBucket(20, time.Second)
+  appGroup.Use(tokenBucket.RateLimitMiddleware())
+
   appGroup.Use(getTokenMiddleware())
   appGroup.GET("/list", app.ListApp)
   appGroup.GET("/create", app.CreateApp)
